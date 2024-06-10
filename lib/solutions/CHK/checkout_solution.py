@@ -37,9 +37,15 @@ PRICES = {
 # remaining amounts 4th
 
 FREE_DEALS = {
-    #SKU: (Required amount, FREE SKU)
     "E": (2, "B"),
-    ""
+    "F": (2, "F"),
+    "N": (3, "M"),
+    "R": (3, "Q"),
+    "U": (3, "U")
+}
+
+BULK_DEALS = {
+    "A": 
 }
 
 
@@ -92,6 +98,7 @@ def checkout(skus):
         total += PRICES["F"] * basket["F"]
 
     return total
+
 
 
 
