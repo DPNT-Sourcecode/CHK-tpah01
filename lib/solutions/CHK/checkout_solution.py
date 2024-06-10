@@ -49,10 +49,9 @@ BULK_DEALS = {
     "B": [(2, 45)],
     "H": [(10, 80), (5, 45)],
     "K": [(2, 150)],
-    "P": [(,)],
-    "": [(,)],
-    "": [(,)],
-    "": [(,)],
+    "P": [(5, 200)],
+    "Q": [(2,80)],
+    "V": [(3,130), (2, 90)]
 }
 
 
@@ -65,46 +64,50 @@ def checkout(skus):
             return -1
         basket[char] = basket.get(char, 0) + 1
     
+    # Adjust quantities based on free deals
 
-    
-    # apply E deals first
-    e_count = basket.get("E", 0)
-    n_free_Bs = e_count // 2
+    for deal in FREE_DEALS:
+        if
+        
+    # # apply E deals first
+    # e_count = basket.get("E", 0)
+    # n_free_Bs = e_count // 2
 
-    total += e_count * PRICES["E"]
+    # total += e_count * PRICES["E"]
     
-    if "B" in basket:
-        basket["B"] -= n_free_Bs
-        basket["B"] = 0 if basket["B"] < 0 else basket["B"]
+    # if "B" in basket:
+    #     basket["B"] -= n_free_Bs
+    #     basket["B"] = 0 if basket["B"] < 0 else basket["B"]
 
-        # then B deals where possible
-        n_B_offers = basket["B"] // 2
-        total += n_B_offers * 45
-        total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
+    #     # then B deals where possible
+    #     n_B_offers = basket["B"] // 2
+    #     total += n_B_offers * 45
+    #     total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
     
-    if "A" in basket:
-        # Apply bulk A deal first
-        n_5A_offers = basket["A"] // 5
-        total += n_5A_offers * 200
-        basket["A"] -= 5 * n_5A_offers
+    # if "A" in basket:
+    #     # Apply bulk A deal first
+    #     n_5A_offers = basket["A"] // 5
+    #     total += n_5A_offers * 200
+    #     basket["A"] -= 5 * n_5A_offers
 
-        # then 2ndary A deal if possible
-        n_3A_offers = basket["A"] // 3
-        total += n_3A_offers * 130
-        basket["A"] -= 3 * n_3A_offers
+    #     # then 2ndary A deal if possible
+    #     n_3A_offers = basket["A"] // 3
+    #     total += n_3A_offers * 130
+    #     basket["A"] -= 3 * n_3A_offers
 
-        total += basket["A"] * PRICES["A"]
+    #     total += basket["A"] * PRICES["A"]
     
-    for char in ["C", "D"]:
-        if char in basket:
-            total += basket[char] * PRICES[char]
+    # for char in ["C", "D"]:
+    #     if char in basket:
+    #         total += basket[char] * PRICES[char]
     
-    if "F" in basket:
-        n_F_offers = basket["F"] // 3
-        basket["F"] -= n_F_offers
-        total += PRICES["F"] * basket["F"]
+    # if "F" in basket:
+    #     n_F_offers = basket["F"] // 3
+    #     basket["F"] -= n_F_offers
+    #     total += PRICES["F"] * basket["F"]
 
     return total
+
 
 
 
