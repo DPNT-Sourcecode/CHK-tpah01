@@ -28,15 +28,22 @@ def checkout(skus):
     
     for sku in basket:
         amount = basket[sku]
+        if amount == 0:
+            continue
+
         if sku in OFFERS:
             offer_amount, offer_price = OFFERS[sku]
             times_offered = amount // offer_amount
             total += times_offered * offer_price
+            print(times_offered, offer_amount)
             total += amount % (times_offered * offer_amount)
         else:
             total += PRICES[sku] * amount
     
     return total
+
+print(checkout("AAAA"))
+
 
 
 
