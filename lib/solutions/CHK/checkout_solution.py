@@ -101,6 +101,11 @@ def checkout(skus):
     
     group = { "S", "T", "X", "Y", "Z" }
     
+    while group_total(basket, group) >= 3:
+        for _ in range(3):
+            priority_remove(basket)
+        total += 45
+    
     # Calculate remaining amounts
     for sku in basket:
         total += basket[sku] * PRICES[sku]
@@ -124,5 +129,8 @@ def priority_remove(basket):
         if amount <= 0:
             i += 1
         else:
-            basket[PRIORITY]   
+            basket[PRIORITY[i]] -= 1
+            not_removed = False   
+
+print(checkout("ZSTYX"))
 
