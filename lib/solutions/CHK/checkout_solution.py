@@ -64,6 +64,8 @@ def checkout(skus):
             return -1
         basket[char] = basket.get(char, 0) + 1
     
+    print(basket)
+    
     # Adjust quantities based on free deals
     for deal_sku in FREE_DEALS.keys():
         if deal_sku not in basket:
@@ -106,5 +108,5 @@ def checkout(skus):
     return total
 
 
-print(checkout("LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH"))
+print(checkout("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHVVVBBNNNMFFFKKQQQVVHHHHH"))
 
