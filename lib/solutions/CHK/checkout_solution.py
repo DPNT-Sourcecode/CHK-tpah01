@@ -30,19 +30,27 @@ def checkout(skus):
         basket["B"] -= n_free_Bs
         basket["B"] = 0 if basket["B"] < 0 else basket["B"]
 
-    # then B deals where possible
-    n_B_offers = basket["B"] // 2
-    total += n_B_offers * 45
-    total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
+        # then B deals where possible
+        n_B_offers = basket["B"] // 2
+        total += n_B_offers * 45
+        total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
 
     # Apply bulk A deal first
-    n_5A_offers = 
+    if "A" in basket:
+        n_5A_offers = basket["A"] // 5
+        total += n_5A_offers * 200
+        basket["A"] -= 5 * n_5A_offers
+
+        n_3A_offers = basket["A"] // 3
+        total += n_3A_offers * 130
+        babasket["A"] -= 3 * n_3A_offers
 
     # then 2ndary A deal if possible
     
     return total
 
 print(checkout("ABCD"))
+
 
 
 
