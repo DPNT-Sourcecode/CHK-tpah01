@@ -63,9 +63,7 @@ def checkout(skus):
         if char not in PRICES:
             return -1
         basket[char] = basket.get(char, 0) + 1
-    
-    print(basket)
-    
+        
     # Adjust quantities based on free deals
     for deal_sku in FREE_DEALS.keys():
         if deal_sku not in basket:
@@ -87,9 +85,6 @@ def checkout(skus):
         if basket[free_sku] < 0:
             basket[free_sku] = 0
     
-    print("deducted freebies")
-    print(basket)
-    
     # Adjust quantities based on bulk deals
     for deal_sku in BULK_DEALS.keys():
         if deal_sku not in basket:
@@ -104,6 +99,8 @@ def checkout(skus):
             if basket[deal_sku] < 0:
                 basket[deal_sku] = 0
     
+    group = { "S" }
+    
     # Calculate remaining amounts
     for sku in basket:
         total += basket[sku] * PRICES[sku]
@@ -112,3 +109,4 @@ def checkout(skus):
 
 
 print(checkout("PPPPQRUVPQRUVPQRUVSU"))
+
