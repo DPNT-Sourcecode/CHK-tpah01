@@ -112,4 +112,3 @@ def checkout(skus):
 
 
 print(checkout("PPPPQRUVPQRUVPQRUVSU"))
-
