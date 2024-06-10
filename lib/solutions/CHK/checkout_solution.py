@@ -25,6 +25,15 @@ def checkout(skus):
         basket[char] = basket.get(char, 0) + 1
     
     # apply E deals first
+    e_count = basket.get("E", 0)
+    n_free_Bs = e_count // 2
+
+    total += e_count * PRICES["E"]
+    
+    if "B" in basket:
+        basket["B"] -= n_free_Bs
+        basket["B"] = 0 if bask
+
     # then B deals where possible
 
     # Apply bulk A deal first
@@ -33,5 +42,6 @@ def checkout(skus):
     return total
 
 print(checkout("ABCD"))
+
 
 
