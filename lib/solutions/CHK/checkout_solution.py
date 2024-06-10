@@ -55,8 +55,8 @@ def checkout(skus):
     
     if "F" in basket:
         n_F_offers = basket["F"] // 3
-        basket["F"] -= 
+        basket["F"] -= n_F_offers
+        total += PRICES["F"] * basket["F"]
 
     return total
 
-# print(checkout("EEBBB"))
