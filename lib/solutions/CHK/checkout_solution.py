@@ -113,6 +113,16 @@ def group_total(basket, group):
         total += basket.get(sku, 0)
     return total
 
+PRIORITY = ["Z", "S", "T", "Y", "X"]
+
 def priority_remove(basket):
-    
+    not_removed = True
+    i = 0
+
+    while not_removed:
+        amount = basket.get(PRIORITY[i], 0)
+        if amount <= 0:
+            i += 1
+        else:
+            basket[PRIORITY]   
 
