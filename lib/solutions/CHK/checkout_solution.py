@@ -94,43 +94,16 @@ def checkout(skus):
         for amount, cost in BULK_DEALS[deal_sku]:
             n_applied = basket[deal_sku] // amount
             total += n_applied * cost
+            basket[deal_sku] -= n_applied * amount
 
-    # # apply E deals first
-    # e_count = basket.get("E", 0)
-    # n_free_Bs = e_count // 2
-
-    # total += e_count * PRICES["E"]
+            if basket[deal_sku] < 0:
+                basket[deal_sku] = 0
     
-    # if "B" in basket:
-    #     basket["B"] -= n_free_Bs
-    #     basket["B"] = 0 if basket["B"] < 0 else basket["B"]
-
-    #     # then B deals where possible
-    #     n_B_offers = basket["B"] // 2
-    #     total += n_B_offers * 45
-    #     total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
-    
-    # if "A" in basket:
-    #     # Apply bulk A deal first
-    #     n_5A_offers = basket["A"] // 5
-    #     total += n_5A_offers * 200
-    #     basket["A"] -= 5 * n_5A_offers
-
-    #     # then 2ndary A deal if possible
-    #     n_3A_offers = basket["A"] // 3
-    #     total += n_3A_offers * 130
-    #     basket["A"] -= 3 * n_3A_offers
-
-    #     total += basket["A"] * PRICES["A"]
-    
-    # for char in ["C", "D"]:
-    #     if char in basket:
-    #         total += basket[char] * PRICES[char]
-    
-    # if "F" in basket:
-    #     n_F_offers = basket["F"] // 3
-    #     basket["F"] -= n_F_offers
-    #     total += PRICES["F"] * basket["F"]
+    # Calculate remaining amounts
+    for sku in basket:
+        total += basket[sku] * PRICES[sku]
 
     return total
+
+print(checkout("UUUNNNM"))
 
