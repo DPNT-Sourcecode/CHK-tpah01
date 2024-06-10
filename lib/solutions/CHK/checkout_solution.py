@@ -87,6 +87,9 @@ def checkout(skus):
         if basket[free_sku] < 0:
             basket[free_sku] = 0
     
+    print("deducted freebies")
+    print(basket)
+    
     # Adjust quantities based on bulk deals
     for deal_sku in BULK_DEALS.keys():
         if deal_sku not in basket:
@@ -108,5 +111,5 @@ def checkout(skus):
     return total
 
 
-print(checkout("AAAAAPPPPPUUUUEEBRRRQAAAHHHHHHHHHHVVVBBNNNMFFFKKQQQVVHHHHH"))
+print(checkout("PPPPQRUVPQRUVPQRUVSU"))
 
