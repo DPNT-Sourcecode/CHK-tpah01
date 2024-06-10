@@ -34,15 +34,21 @@ def checkout(skus):
         if sku in OFFERS:
             offer_amount, offer_price = OFFERS[sku]
             times_offered = amount // offer_amount
+
+            remaining = 0
+            
+            if times_offered != 0:
+                remaining = amount % (times_offered * offer_amount)
+
             total += times_offered * offer_price
-            print(times_offered, offer_amount)
-            total += amount % (times_offered * offer_amount)
+            total += remaining * PRICES[sku]
         else:
             total += PRICES[sku] * amount
     
     return total
 
-print(checkout("AAAA"))
+print(checkout("AAAAB"))
+
 
 
 
