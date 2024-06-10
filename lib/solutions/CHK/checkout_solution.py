@@ -29,9 +29,15 @@ def checkout(skus):
     for sku in basket:
         amount = basket[sku]
         if sku in OFFERS:
-            # offer calculation
+            offer_amount, offer_price = OFFERS[sku]
+            times_offered = amount // offer_amount
+            total += times_offered * offer_price
+            total += amount % (times_offered * offer_amount)
         else:
             total += PRICES[sku] * amount
+    
+    return total
+
 
 
 
