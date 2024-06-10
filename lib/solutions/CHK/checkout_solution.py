@@ -65,19 +65,34 @@ def checkout(skus):
         basket[char] = basket.get(char, 0) + 1
     
     # Adjust quantities based on free deals
-
     for deal_sku in FREE_DEALS.keys():
         if deal_sku not in basket:
             continue
 
         free_sku = FREE_DEALS[deal_sku][1]
+        
+        if free_sku not in basket:
+            continue
+
+
         req_amount = FREE_DEALS[deal_sku][0]
 
         if free_sku == deal_sku:
             req_amount += 1
         
-        n_applied = basket[deal_sku] 
+        n_applied = basket[deal_sku] // req_amount
+        basket[free_sku] -= n_applied
+
+        if basket[free_sku] <= 0:
+            del basket[free_sku]
+    
+    # Adjust quantities based on bulk deals
+    for deal_sku in BULK_DEALS.keys():
+        if deal_sku not in basket:
+            continue
+
         
+
     # # apply E deals first
     # e_count = basket.get("E", 0)
     # n_free_Bs = e_count // 2
@@ -116,10 +131,3 @@ def checkout(skus):
     #     total += PRICES["F"] * basket["F"]
 
     return total
-
-
-
-
-
-
-
