@@ -10,10 +10,6 @@ PRICES = {
     "E": 40
 }
 
-OFFERS = {
-    "A": (3, 130),
-    "B": (2, 45)
-}
 
 def checkout(skus):
     basket = {}
@@ -32,16 +28,22 @@ def checkout(skus):
     
     if "B" in basket:
         basket["B"] -= n_free_Bs
-        basket["B"] = 0 if bask
+        basket["B"] = 0 if basket["B"] < 0 else basket["B"]
 
     # then B deals where possible
+    n_B_offers = basket["B"] // 2
+    total += n_B_offers * 45
+    total += (basket["B"] - 2*n_B_offers) * PRICES["B"]
 
     # Apply bulk A deal first
+    n_5A_offers = 
+
     # then 2ndary A deal if possible
     
     return total
 
 print(checkout("ABCD"))
+
 
 
 
