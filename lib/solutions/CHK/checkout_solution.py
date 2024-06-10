@@ -7,7 +7,8 @@ PRICES = {
     "B": 30,
     "C": 20,
     "D": 15,
-    "E": 40
+    "E": 40,
+    "F": 10
 }
 
 
@@ -51,14 +52,11 @@ def checkout(skus):
     for char in ["C", "D"]:
         if char in basket:
             total += basket[char] * PRICES[char]
+    
+    if "F" in basket:
+        n_F_offers = basket["F"] // 3
+        basket["F"] -= 
 
     return total
 
 # print(checkout("EEBBB"))
-
-
-
-
-
-
-
