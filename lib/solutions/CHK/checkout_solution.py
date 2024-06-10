@@ -9,7 +9,10 @@ PRICES = {
     "D": 15
 }
 
-
+OFFERS = {
+    "A": (3, 130),
+    "B": (2, 45)
+}
 
 def checkout(skus):
     basket = {"A": 0,
@@ -22,5 +25,13 @@ def checkout(skus):
         if char not in basket:
             return -1
         basket[char] += 1
+    
+    for sku in basket:
+        amount = basket[sku]
+        if sku in OFFERS:
+            # offer calculation
+        else:
+            total += PRICES[sku] * amount
+
 
 
