@@ -99,7 +99,7 @@ def checkout(skus):
             if basket[deal_sku] < 0:
                 basket[deal_sku] = 0
     
-    group = { "S" }
+    group = { "S", "T", "X", "Y", "Z" }
     
     # Calculate remaining amounts
     for sku in basket:
@@ -107,6 +107,12 @@ def checkout(skus):
 
     return total
 
+def group_total(basket, group):
+    total = 0
+    for sku in group:
+        total += basket.get(sku, 0)
+    return total
 
-print(checkout("PPPPQRUVPQRUVPQRUVSU"))
+def priority_remove(basket):
+    
 
