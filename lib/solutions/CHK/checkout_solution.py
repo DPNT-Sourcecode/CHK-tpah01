@@ -50,8 +50,8 @@ BULK_DEALS = {
     "H": [(10, 80), (5, 45)],
     "K": [(2, 150)],
     "P": [(5, 200)],
-    "Q": [(2,80)],
-    "V": [(3,130), (2, 90)]
+    "Q": [(3, 80)],
+    "V": [(3, 130), (2, 90)]
 }
 
 
@@ -104,4 +104,7 @@ def checkout(skus):
         total += basket[sku] * PRICES[sku]
 
     return total
+
+
+print(checkout("LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH"))
 
