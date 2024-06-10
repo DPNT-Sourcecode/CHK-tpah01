@@ -6,7 +6,8 @@ PRICES = {
     "A": 50,
     "B": 30,
     "C": 20,
-    "D": 15
+    "D": 15,
+    "E": 40
 }
 
 OFFERS = {
@@ -15,34 +16,22 @@ OFFERS = {
 }
 
 def checkout(skus):
-    basket = {"A": 0, "B": 0, "C": 0, "D": 0}
+    basket = {}
     total = 0
 
     for char in skus:
-        if char not in basket:
+        if char not in PRICES:
             return -1
-        basket[char] += 1
+        basket[char] = basket.get(char, 0) + 1
     
-    for sku in basket:
-        amount = basket[sku]
-        if amount == 0:
-            continue
+    # apply E deals first
+    # then B deals where possible
 
-        if sku in OFFERS:
-            offer_amount, offer_price = OFFERS[sku]
-            times_offered = amount // offer_amount
-
-            remaining = amount
-            
-            if times_offered != 0:
-                remaining = amount % (times_offered * offer_amount)
-
-            total += times_offered * offer_price
-            total += remaining * PRICES[sku]
-        else:
-            total += PRICES[sku] * amount
+    # Apply bulk A deal first
+    # then 2ndary A deal if possible
     
     return total
 
 print(checkout("ABCD"))
+
 
