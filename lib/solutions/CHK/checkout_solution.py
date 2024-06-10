@@ -3,13 +3,36 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 PRICES = {
-    "A": 50,
-    "B": 30,
-    "C": 20,
-    "D": 15,
-    "E": 40,
-    "F": 10
+"A": 50,
+"B": 30,
+"C": 20,
+"D": 15,
+"E": 40,
+"F": 10,
+"G": 20,
+"H": 10,
+"I": 35,
+"J": 60,
+"K": 80,
+"L": 90,
+"M": 15,
+"N": 40,
+"O": 10,
+"P": 50,
+"Q": 30,
+"R": 50,
+"S": 30,
+"T": 20,
+"U": 40,
+"V": 50,
+"W": 20,
+"X": 90,
+"Y": 10,
+"Z": 50
 }
+
+# Apply free deals first
+# Bulk
 
 
 def checkout(skus):
@@ -20,6 +43,8 @@ def checkout(skus):
         if char not in PRICES:
             return -1
         basket[char] = basket.get(char, 0) + 1
+    
+
     
     # apply E deals first
     e_count = basket.get("E", 0)
@@ -59,4 +84,5 @@ def checkout(skus):
         total += PRICES["F"] * basket["F"]
 
     return total
+
 
