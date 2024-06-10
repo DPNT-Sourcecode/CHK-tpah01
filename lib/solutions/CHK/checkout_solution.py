@@ -35,7 +35,7 @@ def checkout(skus):
             offer_amount, offer_price = OFFERS[sku]
             times_offered = amount // offer_amount
 
-            remaining = 0
+            remaining = amount
             
             if times_offered != 0:
                 remaining = amount % (times_offered * offer_amount)
@@ -47,7 +47,8 @@ def checkout(skus):
     
     return total
 
-print(checkout("AAAAB"))
+print(checkout("ABCD"))
+
 
 
 
